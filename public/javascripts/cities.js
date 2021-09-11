@@ -14,7 +14,17 @@ const axisYGroup = svg
   .attr("class", "y-axis")
   .attr("transform", "translate(100, 0)")
 
+const axisXText = svg
+  .append("text")
+  .attr("class", "x-axis")
+  .attr("transform", "translate(460, 670)")
+  .text("x axis")
 
+const axisYText = svg
+  .append("text")
+  .attr("class", "y-axis")
+  .attr("transform", "translate(50, 330), rotate(-90)")
+  .text("y axis")
 
 const placeCities = function() {
 
@@ -23,6 +33,12 @@ const placeCities = function() {
 
   let valueX = inputX.value
   let valueY = inputY.value
+
+  let textX = inputX.options[inputX.selectedIndex].innerHTML
+  let textY = inputX.options[inputY.selectedIndex].innerHTML
+
+  axisXText.text(textX)
+  axisYText.text(textY)
 
   let maxValueX = d3.max(data, (d, i) => { return d[valueX] })
   let maxValueY = d3.max(data, (d, i) => { return d[valueY] })
@@ -41,7 +57,15 @@ const placeCities = function() {
     .range([0, 30])
 
   const axisX = d3.axisBottom(scaleX)
+    .tickSizeInner(-520)
+    .tickSizeOuter(0)
+    .tickPadding(10)
+    .ticks(10, "$,f")
+
   const axisY = d3.axisLeft(scaleY)
+    .tickSizeInner(-760)
+    .tickSizeOuter(0)
+    .tickPadding(10)
 
   axisXGroup.call(axisX)
   axisYGroup.call(axisY)
