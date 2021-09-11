@@ -23,3 +23,4 @@ Compare the following data points for each city:
 * morgan
 
 ## 📸 Screenshots
+![scattergraph screenshot](https://github.com/sandypockets/cost-of-living/blob/main/docs/cost-of-living-screenshot.png?raw=true)
