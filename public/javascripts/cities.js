@@ -8,6 +8,14 @@ const placeCities = function() {
   let valueX = "singlePerson"
   let valueY = "apartment"
 
+  const scaleX = d3.scaleLinear()
+    .domain([0, 1500])
+    .range([100, 860])
+
+  const scaleY = d3.scaleLinear()
+    .domain([0, 4000])
+    .range([620, 100])
+
   const cities = svg
     .selectAll("g.city")
     .data(data)
@@ -15,8 +23,8 @@ const placeCities = function() {
     .append("g")
     .attr("class", "city")
     .attr("transform", (d, i) => {
-      const x = d.singlePerson
-      const y = d.apartment
+      const x = scaleX(d.singlePerson)
+      const y = scaleY(d.apartment)
       return `translate(${x}, ${y})`
     })
 
