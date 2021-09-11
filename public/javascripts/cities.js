@@ -4,6 +4,18 @@ svg
   .attr("width", 960)
   .attr("height", 720)
 
+const axisXGroup = svg
+  .append("g")
+  .attr("class", "x-axis")
+  .attr("transform", "translate(0, 620)")
+
+const axisYGroup = svg
+  .append("g")
+  .attr("class", "y-axis")
+  .attr("transform", "translate(100, 0)")
+
+
+
 const placeCities = function() {
 
   let inputX = document.querySelector("select[name=valueX]")
@@ -27,6 +39,12 @@ const placeCities = function() {
   const scaleR = d3.scaleSqrt()
     .domain([0, maxValueR])
     .range([0, 30])
+
+  const axisX = d3.axisBottom(scaleX)
+  const axisY = d3.axisLeft(scaleY)
+
+  axisXGroup.call(axisX)
+  axisYGroup.call(axisY)
 
   const cities = svg
     .selectAll("g.city")
