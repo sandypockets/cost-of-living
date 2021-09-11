@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Work-Sans:400,700)
+@import url(//fonts.googleapis.com/css?family=Work-Sans:400,700);
 
 /* Vars */
 :root {
@@ -73,4 +73,10 @@ h1 {
 
 span {
   margin: 0 8px;
+}
+
+circle {
+  fill: var(--primary-color);
+  stroke: var(--background);
+  stroke-width: 3px;
 }
