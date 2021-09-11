@@ -8,12 +8,15 @@ const placeCities = function() {
   let valueX = "singlePerson"
   let valueY = "apartment"
 
+  let maxValueX = d3.max(data, (d, i) => { return d[valueX] })
+  let maxValueY = d3.max(data, (d, i) => { return d[valueY] })
+
   const scaleX = d3.scaleLinear()
-    .domain([0, 1500])
+    .domain([0, maxValueX])
     .range([100, 860])
 
   const scaleY = d3.scaleLinear()
-    .domain([0, 4000])
+    .domain([0, maxValueY])
     .range([620, 100])
 
   const cities = svg
@@ -23,8 +26,8 @@ const placeCities = function() {
     .append("g")
     .attr("class", "city")
     .attr("transform", (d, i) => {
-      const x = scaleX(d.singlePerson)
-      const y = scaleY(d.apartment)
+      const x = scaleX(d[valueX])
+      const y = scaleY(d[valueY])
       return `translate(${x}, ${y})`
     })
 
